@@ -13,7 +13,7 @@ const TodoApp = () => {
 
   const todosCollection = collection(db, "todos");
 
-  // Fetch all todos
+  
   const fetchTodos = async () => {
     const snapshot = await getDocs(todosCollection);
     const tasks = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -24,7 +24,7 @@ const TodoApp = () => {
     fetchTodos();
   }, []);
 
-  // Add new todo
+
   const handleAdd = async () => {
     if (!newTodo.trim()) return;
     await addDoc(todosCollection, { text: newTodo });
@@ -32,7 +32,7 @@ const TodoApp = () => {
     fetchTodos();
   };
 
-  // Edit (setDoc)
+  
   const handleSetDoc = async (id) => {
     const docRef = doc(db, "todos", id);
     await setDoc(docRef, { text: newTodo });
@@ -41,7 +41,7 @@ const TodoApp = () => {
     fetchTodos();
   };
 
-  // Update (updateDoc)
+
   const handleUpdate = async (id) => {
     const docRef = doc(db, "todos", id);
     await updateDoc(docRef, { text: newTodo });
@@ -50,14 +50,14 @@ const TodoApp = () => {
     fetchTodos();
   };
 
-  // Delete todo
+
   const handleDelete = async (id) => {
     const docRef = doc(db, "todos", id);
     await deleteDoc(docRef);
     fetchTodos();
   };
 
-  // Get single todo
+
   const handleEdit = async (id) => {
     const docRef = doc(db, "todos", id);
     const snap = await getDoc(docRef);
@@ -108,7 +108,7 @@ const TodoApp = () => {
 
 
 
-// 🎨 Inline CSS styles
+
 const styles = {
   container: {
     minHeight: '100vh',
@@ -178,3 +178,4 @@ const styles = {
 };
 
 export default TodoApp;
+
